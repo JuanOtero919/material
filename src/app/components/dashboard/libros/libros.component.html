@@ -1,0 +1,92 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Libros</span>
+        <div class="example-spacer"></div>
+        <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-libro">Agregar</button>
+    </mat-toolbar>
+
+    <div *ngIf="listLibros.length > 0">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+      </mat-form-field>
+  
+      <div  class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="autores">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Autores</th>
+            <td mat-cell *matCellDef="let element"> {{element.autores}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="isbn">
+            <th mat-header-cell *matHeaderCellDef> ISBN </th>
+            <td mat-cell *matCellDef="let element"> {{element.isbn}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="numeroPaginas">
+            <th mat-header-cell *matHeaderCellDef> N° Pags </th>
+            <td mat-cell *matCellDef="let element"> {{element.numeroPaginas}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="editorial">
+            <th mat-header-cell *matHeaderCellDef> Editorial </th>
+            <td mat-cell *matCellDef="let element"> {{element.editorial}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="fechaPublicacion">
+            <th mat-header-cell *matHeaderCellDef> F. Publicacion </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaPublicacion}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="fechaRegistro">
+            <th mat-header-cell *matHeaderCellDef> F. Registro </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaRegistro}} </td>
+          </ng-container>
+  
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef style="text-align: right;"> Acciones </th>
+            <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;"> 
+              
+              <a (click)="editLibro(i)"  routerLink="/dashboard/nuevo-libro" class="pointer" style="color: #1f516f;" matTooltip="Editar libro">
+                <mat-icon>edit</mat-icon>
+              </a> 
+              <a (click)="eliminarLibro(i)" class="pointer" style="color: #e15639;" matTooltip="Eliminar libro">
+                <mat-icon>delete</mat-icon>
+              </a>   
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </div>
+
+  <h2 *ngIf="listLibros.length == 0">No hay libros para mostrar</h2>
+
+    
+            
+
+</div>

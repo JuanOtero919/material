@@ -1,0 +1,69 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Datos Libro</span>
+    </mat-toolbar>
+
+    <mat-card>
+        <form [formGroup]="form" (ngSubmit)="AgregarLibro()" >
+            <mat-grid-list cols="4" rowHeight="50px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field class="ancho">
+                        <mat-label>Titulo</mat-label>
+                        <input matInput autocomplete="off" formControlName="titulo" id="titulo">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="8">
+                    <img src="./assets/img/user.png" width="30%">
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Autor</mat-label>
+                        <input matInput autocomplete="off" formControlName="autores" id="autores">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>ISBN</mat-label>
+                        <input matInput autocomplete="off" formControlName="isbn">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>N° Pag</mat-label>
+                        <input matInput autocomplete="off" formControlName="numeroPaginas">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Editorial</mat-label>
+                        <input matInput autocomplete="off" formControlName="editorial">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>fecha Publicacion</mat-label>
+                        <input matInput autocomplete="off" formControlName="fechaPublicacion">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>fecha Registro</mat-label>
+                        <input matInput autocomplete="off" formControlName="fechaRegistro">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Guardar</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+              
+        </form>
+    </mat-card>
+
+
+</div>
